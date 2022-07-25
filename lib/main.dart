@@ -14,8 +14,10 @@ class MyApp extends StatelessWidget {
     Transaction(id: "4", title: "specs", amount: 2200, date: DateTime.now()),
   ];
 
-  String titleinp = "";
-  String amountinp = "";
+  // String titleinp = "";
+  // String amountinp = "";
+  final title_controller = TextEditingController();
+  final amount_controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,15 +55,17 @@ class MyApp extends StatelessWidget {
                       children: [
                         TextField(
                           decoration: InputDecoration(labelText: "title"),
-                          onChanged: (x) {
-                            titleinp = x;
-                          },
+                          controller: title_controller,
+                          // onChanged: (x) {
+                          //   titleinp = x;
+                          // },
                         ),
                         TextField(
                           decoration: InputDecoration(labelText: "amount"),
-                          onChanged: (y) {
-                            amountinp = y;
-                          },
+                          controller: amount_controller,
+                          // onChanged: (y) {
+                          //   amountinp = y;
+                          // },
                         ),
                         FlatButton(
                             onPressed: () {}, child: Text("add transaction"))
