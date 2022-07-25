@@ -1,4 +1,4 @@
-import 'package:financulator/transaction.dart';
+import 'package:financulator/models/transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
