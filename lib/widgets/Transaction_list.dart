@@ -12,7 +12,7 @@ class TransactionList extends StatelessWidget {
       child: ListView.builder(
         itemBuilder: (ctx, index) {
           return Card(
-            color: Color(0xFFD9F8C4),
+            color: Color(0xFF76BA99),
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
             elevation: 10,
@@ -22,13 +22,14 @@ class TransactionList extends StatelessWidget {
                     EdgeInsets.only(right: 30, left: 15, top: 15, bottom: 15),
                 padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                    border: Border.all(color: Color(0xFF809A6F), width: 4),
+                    border: Border.all(
+                        color: Color.fromARGB(255, 32, 80, 0), width: 4),
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Text(
                   '₹${trans[index].amount}',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF3CCF4E),
+                      color: Color.fromARGB(255, 0, 118, 14),
                       fontSize: 20),
                 ),
               ),

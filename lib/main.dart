@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Card(
-              color: Color(0xFFC4DFAA),
+              color: Color(0xFF76BA99),
               child: Container(
                 width: double.infinity,
                 child: Center(
