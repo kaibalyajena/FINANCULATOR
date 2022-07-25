@@ -19,28 +19,25 @@ class MyApp extends StatelessWidget {
           title: Text("FINANCULATOR"),
           backgroundColor: Color(0xFF76BA99),
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Card(
-                color: Color(0xFFC4DFAA),
-                child: Container(
-                  width: double.infinity,
-                  child: Center(
-                    child: Text(
-                      "chart here",
-                      style: TextStyle(fontSize: 30),
-                    ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Card(
+              color: Color(0xFFC4DFAA),
+              child: Container(
+                width: double.infinity,
+                child: Center(
+                  child: Text(
+                    "chart here",
+                    style: TextStyle(fontSize: 30),
                   ),
                 ),
-                elevation: 7,
-                margin:
-                    EdgeInsets.only(bottom: 30, top: 20, left: 10, right: 10),
               ),
-              UserTransactions()
-            ],
-          ),
+              elevation: 7,
+              margin: EdgeInsets.only(bottom: 30, top: 20, left: 10, right: 10),
+            ),
+            UserTransactions()
+          ],
         ),
       ),
     );

@@ -7,9 +7,10 @@ class TransactionList extends StatelessWidget {
   TransactionList(this.trans);
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ...trans.map((tx) {
+    return Container(
+      height: 400,
+      child: ListView.builder(
+        itemBuilder: (ctx, index) {
           return Card(
             color: Color(0xFFD9F8C4),
             shape:
@@ -24,7 +25,7 @@ class TransactionList extends StatelessWidget {
                     border: Border.all(color: Color(0xFF809A6F), width: 4),
                     borderRadius: BorderRadius.all(Radius.circular(10))),
                 child: Text(
-                  '₹${tx.amount}',
+                  '₹${trans[index].amount}',
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Color(0xFF3CCF4E),
@@ -37,14 +38,14 @@ class TransactionList extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(bottom: 6),
                     child: Text(
-                      tx.title,
+                      trans[index].title,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                     ),
                   ),
                   Container(
                     child: Text(
-                      DateFormat().add_yMMMd().format(tx.date),
+                      DateFormat().add_yMMMd().format(trans[index].date),
                       style: TextStyle(color: Color(0xFF2B7A0B)),
                     ),
                   )
@@ -52,8 +53,9 @@ class TransactionList extends StatelessWidget {
               )
             ]),
           );
-        }).toList()
-      ],
+        },
+        itemCount: trans.length,
+      ),
     );
   }
 }
