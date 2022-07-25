@@ -1,5 +1,4 @@
-import 'package:financulator/widgets/Transaction_list.dart';
-import 'package:financulator/widgets/Transaction_list.dart';
+import 'package:financulator/widgets/user_transaction.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,8 +8,6 @@ void main() {
 class MyApp extends StatelessWidget {
   // String titleinp = "";
   // String amountinp = "";
-  final title_controller = TextEditingController();
-  final amount_controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,32 +36,7 @@ class MyApp extends StatelessWidget {
               elevation: 7,
               margin: EdgeInsets.only(bottom: 30, top: 20, left: 10, right: 10),
             ),
-            Card(
-              elevation: 10,
-              child: Container(
-                  padding: EdgeInsets.only(right: 20, left: 20),
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        TextField(
-                          decoration: InputDecoration(labelText: "title"),
-                          controller: title_controller,
-                          // onChanged: (x) {
-                          //   titleinp = x;
-                          // },
-                        ),
-                        TextField(
-                          decoration: InputDecoration(labelText: "amount"),
-                          controller: amount_controller,
-                          // onChanged: (y) {
-                          //   amountinp = y;
-                          // },
-                        ),
-                        FlatButton(
-                            onPressed: () {}, child: Text("add transaction"))
-                      ])),
-            ),
-            TransactionList()
+            UserTransactions()
           ],
         ),
       ),
