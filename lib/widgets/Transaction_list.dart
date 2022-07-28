@@ -30,7 +30,7 @@ class TransactionList extends StatelessWidget {
                   style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Color.fromARGB(255, 0, 118, 14),
-                      fontSize: 20),
+                      fontSize: 25),
                 ),
               ),
               Column(
@@ -41,7 +41,7 @@ class TransactionList extends StatelessWidget {
                     child: Text(
                       trans[index].title,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                     ),
                   ),
                   Container(

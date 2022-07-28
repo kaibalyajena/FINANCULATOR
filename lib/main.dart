@@ -55,10 +55,13 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: "expenditures",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primarySwatch: Colors.green),
+      theme: ThemeData(primarySwatch: Colors.green, fontFamily: 'Fredoka'),
       home: Scaffold(
         appBar: AppBar(
-          title: Text("FINANCULATOR"),
+          title: Text(
+            "FINANCULATOR",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+          ),
           backgroundColor: Color(0xFF76BA99),
 
           actions: [
