@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-class NewTransaction extends StatelessWidget {
-  final title_controller = TextEditingController();
-  final amount_controller = TextEditingController();
+class NewTransaction extends StatefulWidget {
   final Function add_trans_func;
   NewTransaction(this.add_trans_func);
+
+  @override
+  State<NewTransaction> createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final title_controller = TextEditingController();
+
+  final amount_controller = TextEditingController();
 
   void submit_trans() {
     final title_text = title_controller.text;
@@ -13,7 +20,9 @@ class NewTransaction extends StatelessWidget {
     if (title_text.isEmpty || amount_text <= 0) {
       return;
     }
-    add_trans_func(title_controller.text, int.parse(amount_controller.text));
+    widget.add_trans_func(
+        title_controller.text, int.parse(amount_controller.text));
+    Navigator.of(context).pop();
   }
 
   @override
@@ -26,7 +35,7 @@ class NewTransaction extends StatelessWidget {
             TextField(
               decoration: InputDecoration(labelText: "title"),
               controller: title_controller,
-              //onSubmitted: (_) => {submit_trans()},
+              onSubmitted: (_) => {submit_trans()},
               // onChanged: (x) {
               //   titleinp = x;
               // },
@@ -35,7 +44,7 @@ class NewTransaction extends StatelessWidget {
               decoration: InputDecoration(labelText: "amount"),
               controller: amount_controller,
               keyboardType: TextInputType.number,
-              //onSubmitted: (_) => {submit_trans()},
+              onSubmitted: (_) => {submit_trans()},
               // onChanged: (y) {
               //   amountinp = y;
               // },
