@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:financulator/widgets/new_transaction.dart';
 import 'package:financulator/models/Transaction.dart';
 import 'package:financulator/widgets/Transaction_list.dart';
+import 'package:flutter_launcher_icons/xml_templates.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,12 +53,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: "expenditures",
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(primaryColor: Color(0xFF76BA99)),
+      theme: ThemeData(primarySwatch: Colors.green),
       home: Scaffold(
         appBar: AppBar(
           title: Text("FINANCULATOR"),
           backgroundColor: Color(0xFF76BA99),
+
           actions: [
             Builder(
                 builder: (context) => IconButton(

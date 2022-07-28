@@ -47,7 +47,9 @@ class TransactionList extends StatelessWidget {
                   Container(
                     child: Text(
                       DateFormat().add_yMMMd().format(trans[index].date),
-                      style: TextStyle(color: Color(0xFF2B7A0B)),
+                      style: TextStyle(
+                          color: Color(0xFF2B7A0B),
+                          fontWeight: FontWeight.bold),
                     ),
                   )
                 ],
