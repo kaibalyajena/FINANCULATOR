@@ -4,6 +4,7 @@ import 'package:financulator/widgets/new_transaction.dart';
 import 'package:financulator/models/Transaction.dart';
 import 'package:financulator/widgets/Transaction_list.dart';
 import 'package:flutter_launcher_icons/xml_templates.dart';
+import 'package:financulator/widgets/chart.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,11 +18,26 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // String titleinp = "";
   final List<Transaction> transactions = [
-    // Transaction(id: "1", title: "raquet", amount: 2800, date: DateTime.now()),
-    // Transaction(id: "2", title: "injection", amount: 450, date: DateTime.now()),
-    // Transaction(id: "3", title: "strap", amount: 1050, date: DateTime.now()),
-    // Transaction(id: "4", title: "specs", amount: 2200, date: DateTime.now()),
+    Transaction(id: "1", title: "raquet", amount: 2800, date: DateTime.now()),
+    Transaction(id: "2", title: "injection", amount: 450, date: DateTime.now()),
+    Transaction(id: "3", title: "strap", amount: 1050, date: DateTime.now()),
+    Transaction(id: "4", title: "specs", amount: 2200, date: DateTime.now()),
   ];
+
+  List<Transaction> get recent_transaction {
+    return transactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+    // for (var i = 0; i < transactions.length; i++) {
+    //   final List<Transaction> x;
+    //   if (transactions[i]
+    //       .date
+    //       .isAfter(DateTime.now().subtract(Duration(days: 7)))) {
+    //     x.add(transactions[i]);
+    //   }
+    //   return x;
+    // }
+  }
 
   void newTrans(String title, int amount) {
     final new_trans = Transaction(
@@ -86,21 +102,22 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Card(
-                color: Color(0xFF76BA99),
-                child: Container(
-                  width: double.infinity,
-                  child: Center(
-                    child: Text(
-                      "chart here",
-                      style: TextStyle(fontSize: 30),
-                    ),
-                  ),
-                ),
-                elevation: 7,
-                margin:
-                    EdgeInsets.only(bottom: 30, top: 20, left: 10, right: 10),
-              ),
+              Chart(recent_transaction),
+              // Card(
+              //   color: Color(0xFF76BA99),
+              //   child: Container(
+              //     width: double.infinity,
+              //     child: Center(
+              //       child: Text(
+              //         "chart here",
+              //         style: TextStyle(fontSize: 30),
+              //       ),
+              //     ),
+              //   ),
+              //   elevation: 7,
+              //   margin:
+              //       EdgeInsets.only(bottom: 30, top: 20, left: 10, right: 10),
+              // ),
               TransactionList(transactions)
             ],
           ),
