@@ -17,10 +17,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // String titleinp = "";
   final List<Transaction> transactions = [
-    Transaction(id: "1", title: "raquet", amount: 2800, date: DateTime.now()),
-    Transaction(id: "2", title: "injection", amount: 450, date: DateTime.now()),
-    Transaction(id: "3", title: "strap", amount: 1050, date: DateTime.now()),
-    Transaction(id: "4", title: "specs", amount: 2200, date: DateTime.now()),
+    // Transaction(id: "1", title: "raquet", amount: 2800, date: DateTime.now()),
+    // Transaction(id: "2", title: "injection", amount: 450, date: DateTime.now()),
+    // Transaction(id: "3", title: "strap", amount: 1050, date: DateTime.now()),
+    // Transaction(id: "4", title: "specs", amount: 2200, date: DateTime.now()),
   ];
 
   void newTrans(String title, int amount) {
