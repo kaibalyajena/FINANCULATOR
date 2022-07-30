@@ -36,14 +36,23 @@ class Chart extends StatelessWidget {
   Widget build(BuildContext context) {
     print(daily_trans);
     return Card(
-        elevation: 10,
+        elevation: 20,
         margin: EdgeInsets.all(20),
-        child: Row(
-          children: daily_trans.map((data) {
-            // return Text('hello');
-            return ChartBar((data['day'] as String), (data['amount'] as int),
-                ((data['amount'] as int) / max_amount).toDouble());
-          }).toList(),
+        child: Container(
+          margin: EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
+          child: Flexible(
+            fit: FlexFit.tight,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: daily_trans.map((data) {
+                // return Text('hello');
+                return ChartBar(
+                    (data['day'] as String),
+                    (data['amount'] as int),
+                    ((data['amount'] as int) / max_amount).toDouble());
+              }).toList(),
+            ),
+          ),
         ));
   }
 }
