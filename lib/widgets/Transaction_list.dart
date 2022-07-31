@@ -55,27 +55,38 @@ class TransactionList extends StatelessWidget {
                             fontSize: 25),
                       ),
                     ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(bottom: 6),
-                          child: Text(
-                            trans[index].title,
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 22),
+                    Container(
+                      width: 130,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(bottom: 6),
+                            child: Text(
+                              trans[index].title,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 22),
+                            ),
                           ),
-                        ),
-                        Container(
-                          child: Text(
-                            DateFormat().add_yMMMd().format(trans[index].date),
-                            style: TextStyle(
-                                color: Color(0xFF2B7A0B),
-                                fontWeight: FontWeight.bold),
-                          ),
-                        )
-                      ],
-                    )
+                          Container(
+                            child: Text(
+                              DateFormat()
+                                  .add_yMMMd()
+                                  .format(trans[index].date),
+                              style: TextStyle(
+                                  color: Color(0xFF2B7A0B),
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    IconButton(
+                        onPressed: null,
+                        icon: Icon(
+                          Icons.delete,
+                          color: Colors.white60,
+                        )),
                   ]),
                 );
               },

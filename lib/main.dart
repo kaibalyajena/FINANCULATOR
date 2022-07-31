@@ -39,12 +39,12 @@ class _MyAppState extends State<MyApp> {
     // }
   }
 
-  void newTrans(String title, int amount) {
+  void newTrans(String title, int amount, DateTime transaction_date) {
     final new_trans = Transaction(
         id: DateTime.now().toString(),
         title: title,
         amount: amount,
-        date: DateTime.now());
+        date: transaction_date);
     setState(() {
       transactions.add(new_trans);
     });

@@ -20,11 +20,13 @@ class _NewTransactionState extends State<NewTransaction> {
   void submit_trans() {
     final title_text = title_controller.text;
     final amount_text = int.parse(amount_controller.text);
-    if (title_text.isEmpty || amount_text <= 0) {
+    if (title_text.isEmpty ||
+        amount_text <= 0 ||
+        trans_date == DateTime(1900)) {
       return;
     }
     widget.add_trans_func(
-        title_controller.text, int.parse(amount_controller.text));
+        title_controller.text, int.parse(amount_controller.text), trans_date);
     Navigator.of(context).pop();
   }
 
