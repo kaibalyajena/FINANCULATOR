@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 
 class NewTransaction extends StatefulWidget {
   final Function add_trans_func;
@@ -14,6 +15,8 @@ class _NewTransactionState extends State<NewTransaction> {
 
   final amount_controller = TextEditingController();
 
+  DateTime trans_date = DateTime(1900);
+
   void submit_trans() {
     final title_text = title_controller.text;
     final amount_text = int.parse(amount_controller.text);
@@ -23,6 +26,22 @@ class _NewTransactionState extends State<NewTransaction> {
     widget.add_trans_func(
         title_controller.text, int.parse(amount_controller.text));
     Navigator.of(context).pop();
+  }
+
+  void showDatePickeron() {
+    showDatePicker(
+            context: context,
+            initialDate: DateTime.now(),
+            firstDate: DateTime(2003),
+            lastDate: DateTime(2100))
+        .then((chosen_date) {
+      if (chosen_date == null) {
+        return;
+      }
+      setState(() {
+        trans_date = (chosen_date as DateTime);
+      });
+    });
   }
 
   @override
@@ -49,9 +68,29 @@ class _NewTransactionState extends State<NewTransaction> {
               //   amountinp = y;
               // },
             ),
-            FlatButton(
+            Container(
+              height: 80,
+              child: Row(
+                children: [
+                  Text(trans_date == DateTime(1900)
+                      ? "No date chosen"
+                      : DateFormat().add_yMMMd().format(trans_date)),
+                  FlatButton(
+                      onPressed: showDatePickeron,
+                      child: Text(
+                        "choose date",
+                        style: TextStyle(
+                            color: Colors.amber, fontWeight: FontWeight.bold),
+                      ))
+                ],
+              ),
+            ),
+            ElevatedButton(
               onPressed: submit_trans,
-              child: Text("add transaction"),
+              child: Text(
+                "add transaction",
+                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
+              ),
             )
           ])),
     );

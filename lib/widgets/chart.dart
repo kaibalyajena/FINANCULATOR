@@ -23,7 +23,7 @@ class Chart extends StatelessWidget {
       print(DateFormat.E().format(weekDay).toString());
       print(total_sum);
       return {"day": DateFormat.E().format(weekDay), 'amount': total_sum};
-    });
+    }).reversed.toList();
   }
 
   double get max_amount {
@@ -36,23 +36,19 @@ class Chart extends StatelessWidget {
   Widget build(BuildContext context) {
     print(daily_trans);
     return Card(
-        elevation: 20,
-        margin: EdgeInsets.all(20),
-        child: Container(
-          margin: EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
-          child: Flexible(
-            fit: FlexFit.tight,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: daily_trans.map((data) {
-                // return Text('hello');
-                return ChartBar(
-                    (data['day'] as String),
-                    (data['amount'] as int),
-                    ((data['amount'] as int) / max_amount).toDouble());
-              }).toList(),
-            ),
-          ),
-        ));
+      elevation: 20,
+      margin: EdgeInsets.all(20),
+      child: Container(
+        margin: EdgeInsets.only(top: 20, bottom: 20, left: 10, right: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: daily_trans.map((data) {
+            // return Text('hello');
+            return ChartBar((data['day'] as String), (data['amount'] as int),
+                ((data['amount'] as int) / max_amount).toDouble());
+          }).toList(),
+        ),
+      ),
+    );
   }
 }
