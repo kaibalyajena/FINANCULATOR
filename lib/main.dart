@@ -1,4 +1,3 @@
-import 'package:financulator/widgets/user_transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:financulator/widgets/new_transaction.dart';
 import 'package:financulator/models/Transaction.dart';
@@ -66,6 +65,14 @@ class _MyAppState extends State<MyApp> {
         });
   }
 
+  void delete_trans(String id) {
+    setState(() {
+      transactions.removeWhere((element) {
+        return element.id == id;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -102,7 +109,11 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Chart(recent_transaction),
+              transactions.isEmpty
+                  ? Text("NO CHART DATA")
+                  : recent_transaction.isEmpty
+                      ? Text("NO RECENT TRANSACTION DATA AVAILABLE")
+                      : Chart(recent_transaction),
               // Card(
               //   color: Color(0xFF76BA99),
               //   child: Container(
@@ -118,7 +129,7 @@ class _MyAppState extends State<MyApp> {
               //   margin:
               //       EdgeInsets.only(bottom: 30, top: 20, left: 10, right: 10),
               // ),
-              TransactionList(transactions)
+              TransactionList(transactions, delete_trans)
             ],
           ),
         ),
