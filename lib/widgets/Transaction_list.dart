@@ -40,46 +40,62 @@ class TransactionList extends StatelessWidget {
                   elevation: 10,
                   child: Row(children: [
                     Container(
-                      margin: EdgeInsets.only(
-                          right: 30, left: 15, top: 15, bottom: 15),
-                      padding: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Color.fromARGB(255, 32, 80, 0), width: 4),
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Text(
-                        '₹${trans[index].amount}',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 0, 118, 14),
-                            fontSize: 25),
+                      width: 130,
+                      child: FittedBox(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              right: 30, left: 15, top: 15, bottom: 15),
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Color.fromARGB(255, 32, 80, 0),
+                                  width: 4),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10))),
+                          child: Text(
+                            '₹${trans[index].amount}',
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 0, 118, 14),
+                                fontSize: 25),
+                          ),
+                        ),
                       ),
                     ),
                     Container(
-                      width: 130,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                            margin: EdgeInsets.only(bottom: 6),
-                            child: Text(
-                              trans[index].title,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 22),
-                            ),
+                      width: 150,
+                      height: 70,
+                      child: FittedBox(
+                        child: Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                margin: EdgeInsets.only(bottom: 6),
+                                child: Text(
+                                  trans[index].title,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 22),
+                                ),
+                              ),
+                              Container(
+                                child: Text(
+                                  DateFormat()
+                                      .add_yMMMd()
+                                      .format(trans[index].date),
+                                  style: TextStyle(
+                                      color: Color(0xFF2B7A0B),
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              )
+                            ],
                           ),
-                          Container(
-                            child: Text(
-                              DateFormat()
-                                  .add_yMMMd()
-                                  .format(trans[index].date),
-                              style: TextStyle(
-                                  color: Color(0xFF2B7A0B),
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          )
-                        ],
+                        ),
                       ),
+                    ),
+                    SizedBox(
+                      width: 40,
                     ),
                     IconButton(
                         onPressed: null,
